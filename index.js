@@ -50,7 +50,7 @@ function printGithubUserProfile(username) {
         .then(profile=> {
             let img = profile.avatar_url;
             let name = profile.name;
-            return {'name':name, 'img':{'src':img}}
+            return {'name':name, 'img':img}
         })
 }
 
@@ -65,13 +65,31 @@ function getAndPrintGitHubUserProfile(username) {
             return `<section>
             <img src="${img}" alt="${name}">
             <h1>${name}</h1>
-            <p>Public repos: ${repos+1}</p>
+            <p>Public repos: ${repos}</p>
         </section>`
         })
 }
 
 // 8.
-
+/* let body = document.body;
+let input = document.createElement('input');
+body.appendChild(input);
+input.type = 'text';
+input.name = 'username';
+let button = document.createElement('button');
+button.innerHTML = 'Buscar'
+button.setAttribute('onclick', 'getAndPrintGitHubUserProfile()');
+body.appendChild(button);
+function getAndPrintGitHubUserProfile() {
+    username = document.querySelector('input').value;
+    return fetch(`https://api.github.com/users/${username}`)
+        .then(res=>res.json())
+        .then(profile => {
+            let login = profile.login;
+            let url = profile.html_url;
+            return body.innerHTML +=    `<a href=${url}>${login}<a> `
+        })
+} */
 
 // 9.
 function fetchGithubUsers(userNames) {
